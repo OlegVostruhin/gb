@@ -53,9 +53,8 @@ class PostController extends Controller
         }
         $post->save();
 
-        $user = User::getAdmin();
-        $when = now()->addMinutes(1);
-        $user->notify((new NewPost($post))->delay($when));
+        /*$user = User::getAdmin();
+        $user->notify((new NewPost($post)));*/
 
         $postResponse = array(
             "user" => Auth::user() !== null ? Auth::user()->name : "Аноним",
